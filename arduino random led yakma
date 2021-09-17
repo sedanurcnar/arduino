@@ -1,0 +1,59 @@
+int buton=3, yesilled=4, sariled=5, maviled=6, kirmiziled=7, numara=0;
+
+void setup()  
+{
+ Serial.begin(9600);
+ digitalWrite(buton, INPUT);
+ digitalWrite(yesilled ,OUTPUT);
+ digitalWrite(sariled, OUTPUT);
+ digitalWrite(maviled, OUTPUT);
+ digitalWrite(kirmiziled, OUTPUT);
+ randomSeed(analogRead(A0));
+}
+
+void loop()
+{
+ if ( digitalRead(buton)==HIGH)
+ {
+  numara=random(3,7);
+  Serial.println(numara);
+  
+  switch (numara)
+  {
+      case 3 :
+      Serial.println("YEŞİL");
+      digitalWrite(yesilled,HIGH);
+      digitalWrite(sariled, LOW);
+      digitalWrite(maviled, LOW);
+      digitalWrite(kirmiziled, LOW);
+      break;
+
+      case 4:
+      Serial.println("SARİ");
+      digitalWrite(yesilled, LOW);
+      digitalWrite(sariled, HIGH);
+      digitalWrite(maviled, LOW);
+      digitalWrite(kirmiziled, LOW); 
+      break;
+
+      case 5:
+      Serial.println("MAVİ");
+      digitalWrite(yesilled, LOW);
+      digitalWrite(sariled, LOW);
+      digitalWrite(maviled, HIGH);
+      digitalWrite(kirmiziled, LOW);
+      break;
+
+      case 6:
+      Serial.println("KIRMIZI");
+      digitalWrite(yesilled, LOW);
+      digitalWrite(sariled, LOW);
+      digitalWrite(maviled, LOW);
+      digitalWrite(kirmiziled, HIGH);
+      break;
+  }
+ 
+  
+ }
+ delay (500);
+}
